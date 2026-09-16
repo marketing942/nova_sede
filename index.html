@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A Nova Sede · Colégio CPPEM</title>
-<meta name="description" content="O Colégio CPPEM vai mudar para uma nova sede na Zona Norte de Caruaru, com laboratório, auditório, biblioteca e quadras. Conheça o projeto, a planta e a localização.">
+<meta name="description" content="O Colégio CPPEM vai mudar para uma nova sede na Zona Norte de Caruaru, com biblioteca, sala de informática e quadras. Conheça o projeto, a planta e a localização.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://novasede.cppem.com.br/">
 
@@ -148,7 +148,7 @@ figure .illus::before{width:4px;height:4px;background:var(--gold-lt)}
 
 /* =================== HERO =================== */
 .hero{position:relative;isolation:isolate;min-height:min(92svh,860px);display:flex;align-items:stretch;overflow:hidden}
-.hero video,.hero .hero-fallback{
+.hero .hero-media{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
 }
 .hero::after{
@@ -234,14 +234,6 @@ section{position:relative;z-index:1}
 .chapters button[aria-current="true"]{background:rgba(201,162,39,.14);color:var(--gold-lt)}
 .chapters .t{font-family:var(--serif);font-size:.82rem;font-weight:400;color:var(--gold);font-variant-numeric:tabular-nums;flex-shrink:0;width:3.2em}
 
-/* ---------- ambientes ---------- */
-.rooms{display:grid;gap:clamp(18px,2.4vw,26px);margin-top:clamp(30px,5vw,48px)}
-@media(min-width:820px){.rooms{grid-template-columns:repeat(2,1fr)}}
-.room figure{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss)}
-.room img{width:100%;aspect-ratio:1440/567;object-fit:cover}
-.room h3{margin-top:14px;font-size:1.08rem;color:var(--bone)}
-.room p{margin-top:5px;font-size:.93rem;color:rgba(203,213,225,.78);max-width:42ch}
-@media(min-width:820px){.room--wide{grid-column:1 / -1}}
 
 /* ---------- planta 3d ---------- */
 .plan{position:relative;border:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;background:var(--abyss);margin-top:clamp(30px,5vw,48px)}
@@ -259,6 +251,10 @@ section{position:relative;z-index:1}
 .spec dd small{margin-top:6px;line-height:1.45}
 .spec dd small{display:block;font-weight:400;font-size:.82rem;color:rgba(203,213,225,.7);letter-spacing:.02em}
 
+.tour-more{margin-top:18px;padding:20px 20px 22px;border:1px dashed rgba(201,162,39,.4);border-radius:var(--radius)}
+.tour-more-title{font-size:1.2rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
+.tour-more p:not(.tour-more-title){margin-top:6px;font-size:.93rem;color:rgba(203,213,225,.8)}
+.tour-more .chips{margin-top:14px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chips li{
   list-style:none;padding:7px 15px;border:1px solid var(--rule);border-radius:var(--pill);
@@ -274,6 +270,32 @@ section{position:relative;z-index:1}
 }
 .reasons li::before{content:"";width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--gold);transform:translateY(-2px)}
 .mapframe{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss);margin-top:clamp(24px,3.5vw,38px)}
+.where{
+  padding:clamp(24px,3vw,34px);border:1px solid var(--rule);border-radius:var(--radius);
+  background:linear-gradient(160deg,rgba(16,36,81,.75),rgba(5,11,26,.75));
+}
+.where h3{font-size:1.5rem;color:var(--gold)}
+.where address{
+  margin-top:14px;font-style:normal;font-family:var(--serif);
+  font-size:clamp(1.05rem,1.4vw,1.25rem);line-height:1.6;color:var(--bone);
+}
+.where-label{
+  margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+}
+.landmarks{margin-top:12px;display:grid;gap:10px}
+.landmarks li{
+  list-style:none;display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border-radius:var(--radius-sm);background:rgba(201,162,39,.08);
+  font-size:1rem;color:var(--mist);
+}
+.landmarks li::before{content:"";width:9px;height:9px;flex-shrink:0;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.2)}
+.landmarks b{font-weight:700;color:var(--bone)}
+.where-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.mapgrid{display:grid;gap:clamp(18px,2.4vw,26px);margin-top:clamp(24px,3.5vw,38px)}
+.mapgrid .mapframe{margin-top:0}
+.facade-media{position:relative}
+
 .mapframe-canvas{position:relative}
 /* O alfinete marca o centro do enquadramento, então sairia do lugar assim que
    alguém arrastasse o mapa. O mapa começa travado e só se solta no clique,
@@ -361,9 +383,13 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
 @media(min-width:1000px){.dock{display:none}}
 @media(max-width:999px){footer{padding-bottom:88px}}
 
+.hero .hero-media{animation:heroDrift 24s ease-in-out infinite alternate;transform-origin:60% 55%}
+@keyframes heroDrift{from{transform:scale(1)}to{transform:scale(1.08)}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .hero .hero-media{animation:none!important}
 }
 </style>
 </head>
@@ -378,7 +404,6 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     </a>
     <nav class="topnav" aria-label="Seções da página">
       <a href="#tour">Tour</a>
-      <a href="#ambientes">Ambientes</a>
       <a href="#planta">Planta</a>
       <a href="#localizacao">Localização</a>
       <a href="#etapas">Etapas</a>
@@ -391,7 +416,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <video src="public/hero-loop.mp4" poster="public/img/aerea.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <img class="hero-media" src="public/img/hero-sede.webp" alt="" width="1672" height="658" fetchpriority="high">
   <div class="shell">
     <div class="hero-grid">
       <div>
@@ -419,7 +444,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
       <div>
         <h2>Nossa casa ficou pequena para tudo o que somos</h2>
         <p class="lede" style="margin-top:20px">Hoje o CPPEM vive na Praça Getúlio Vargas. Foi ali que vimos alunos chegarem tímidos e, pouco tempo depois, andarem de cabeça erguida. Cada sala desse prédio guarda uma história, e todas elas vão com a gente.</p>
-        <p style="margin-top:18px">Só que o projeto cresceu. Ele pede laboratório, quadra, auditório, biblioteca e estacionamento, coisas que o prédio atual não tem como receber. Por isso decidimos mudar de endereço, levando os mesmos professores, a mesma rotina e o mesmo jeito de educar para um lugar preparado para os próximos anos.</p>
+        <p style="margin-top:18px">Só que o projeto cresceu. Ele pede quadra, biblioteca, sala de informática e estacionamento, coisas que o prédio atual não tem como receber. Por isso decidimos mudar de endereço, levando os mesmos professores, a mesma rotina e o mesmo jeito de educar para um lugar preparado para os próximos anos.</p>
       </div>
       <figure class="plate">
         <img src="public/img/sede-atual.webp" alt="Fachada de uma unidade do CPPEM com a identidade visual atual" width="1400" height="900" loading="lazy">
@@ -462,7 +487,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
   <div class="shell">
     <div class="split split--wide" style="align-items:end">
       <h2>Um passeio pela escola que estamos preparando</h2>
-      <p class="lede">Imagine a primeira manhã de aula aqui. São 60 segundos pelos ambientes, e você pode tocar num ponto da lista para ir direto a ele.</p>
+      <p class="lede">Imagine a primeira manhã de aula aqui. São 30 segundos pelos ambientes, e você pode tocar num ponto da lista para ir direto a ele.</p>
     </div>
 
     <div class="tour">
@@ -475,81 +500,30 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
         <figcaption>Vídeo Meramente Ilustrativo</figcaption>
       </figure>
 
+      <div>
       <nav class="chapters" id="chapters" aria-label="Capítulos do tour">
         <button type="button" data-t="2"><span class="t">0:02</span>Fachada e pátio</button>
-        <button type="button" data-t="9"><span class="t">0:09</span>Recepção</button>
-        <button type="button" data-t="16.5"><span class="t">0:16</span>Sala de aula</button>
-        <button type="button" data-t="24"><span class="t">0:24</span>Coordenação</button>
-        <button type="button" data-t="31.5"><span class="t">0:31</span>Laboratório de ciências</button>
-        <button type="button" data-t="39"><span class="t">0:39</span>Auditório</button>
-        <button type="button" data-t="46.5"><span class="t">0:46</span>Quadra de futsal</button>
-        <button type="button" data-t="54"><span class="t">0:54</span>Vôlei de areia</button>
+        <button type="button" data-t="8.1"><span class="t">0:08</span>Sala de aula</button>
+        <button type="button" data-t="15"><span class="t">0:15</span>Quadra de futsal</button>
+        <button type="button" data-t="23"><span class="t">0:23</span>Vôlei de areia</button>
       </nav>
-    </div>
-  </div>
-</section>
 
-<!-- ============ AMBIENTES ============ -->
-<section class="band band--deep" id="ambientes">
-  <div class="shell">
-    <div class="split split--wide" style="align-items:end">
-      <h2>Os espaços que esperam seus filhos</h2>
-      <p class="lede">Salas separadas por segmento, laboratório, auditório, biblioteca e quadras no mesmo terreno, ligados por um pátio coberto.</p>
+      <div class="tour-more">
+        <p class="tour-more-title">E muito mais vem por aí</p>
+        <p>Outros espaços da nova sede vão ganhando forma e vamos mostrar cada um conforme a obra avança.</p>
+        <ul class="chips" aria-label="Outros ambientes previstos">
+          <li>Biblioteca</li>
+          <li>Sala de informática</li>
+          <li>Sala de AEE</li>
+          <li>Refeitório e convivência</li>
+          <li>Estúdio de podcast</li>
+          <li>Área de recreação</li>
+          <li>Bicicletário</li>
+          <li>Pátio coberto</li>
+        </ul>
+      </div>
+      </div>
     </div>
-
-    <div class="rooms">
-      <article class="room">
-        <figure><img src="public/img/recepcao.webp" alt="Recepção da nova sede, com brasão do Colégio CPPEM na parede e corredor ao fundo" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Recepção</h3>
-        <p>É aqui que cada família vai ser recebida, logo na entrada do corredor principal.</p>
-      </article>
-      <article class="room">
-        <figure><img src="public/img/sala-de-aula.webp" alt="Sala de aula da nova sede com carteiras enfileiradas, lousa e televisor" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Salas de aula</h3>
-        <p>Doze salas, cada segmento com o seu espaço: Fundamental 1, Fundamental 2 e Ensino Médio, com as carteiras organizadas para a idade de cada turma.</p>
-      </article>
-      <article class="room">
-        <figure><img src="public/img/ciencias.webp" alt="Laboratório de ciências com bancadas, microscópios e vidrarias" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Laboratório de ciências</h3>
-        <p>Bancadas, vidraria e microscópios. A aula de ciências vai sair do livro e parar nas mãos dos alunos.</p>
-      </article>
-      <article class="room">
-        <figure><img src="public/img/auditorio.webp" alt="Auditório da nova sede com poltronas, palco e telão" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Auditório</h3>
-        <p>153 m² para formaturas, palestras, apresentações dos alunos e reuniões de pais, num espaço feito para receber todo mundo.</p>
-      </article>
-      <article class="room">
-        <figure><img src="public/img/coordenacao.webp" alt="Sala de coordenação com mesa de atendimento e mesa de reunião" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Coordenação e atendimento</h3>
-        <p>Secretaria, coordenação, sala dos professores e uma sala reservada para conversar com os pais com calma e privacidade.</p>
-      </article>
-      <article class="room">
-        <figure><img src="public/img/quadra-futsal.webp" alt="Quadra poliesportiva coberta por alambrado, com arquibancada lateral" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>Quadra poliesportiva</h3>
-        <p>27 × 16 m com marcação para futsal, basquete e vôlei. Espaço para a educação física, para os campeonatos e para a torcida na arquibancada.</p>
-      </article>
-    </div>
-
-    <div class="rooms" style="margin-top:clamp(18px,2.4vw,26px)">
-      <article class="room room--wide">
-        <figure><img src="public/img/aerea.webp" alt="Vista aérea da nova sede do Colégio CPPEM, com o prédio identificado, o pátio, a quadra poliesportiva e a quadra de areia" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
-        <h3>A nova sede inteira</h3>
-        <p>Prédio, pátio, quadra poliesportiva e quadra de areia no mesmo terreno. Tudo o que você viu acima, num lugar só.</p>
-      </article>
-    </div>
-
-    <ul class="chips" aria-label="Outros ambientes previstos">
-      <li>Biblioteca</li>
-      <li>Laboratório de informática</li>
-      <li>Sala de AEE</li>
-      <li>Refeitório e convivência</li>
-      <li>Estúdio de podcast</li>
-      <li>Área de cross training</li>
-      <li>Playground</li>
-      <li>Bicicletário</li>
-      <li>Pátio coberto</li>
-      <li>Áreas administrativas ampliadas</li>
-    </ul>
   </div>
 </section>
 
@@ -576,14 +550,14 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     </ul>
 
     <dl class="specs">
-      <div class="spec"><dt>Área total</dt><dd>≈ 6.400 m²<small>Da recepção às quadras</small></dd></div>
+      <div class="spec"><dt>Área total</dt><dd>≈ 6.400 m²<small>Do prédio às quadras</small></dd></div>
       <div class="spec"><dt>Salas de aula</dt><dd>12 salas<small>Separadas por segmento: Fundamental 1, Fundamental 2 e Médio</small></dd></div>
-      <div class="spec"><dt>Auditório</dt><dd>150 lugares<small>153 m² para formaturas, palestras e reuniões de pais</small></dd></div>
+      <div class="spec"><dt>Chegada</dt><dd>Estacionamento<small>Espaço próprio para embarque e desembarque</small></dd></div>
       <div class="spec"><dt>Quadras</dt><dd>2 quadras<small>Poliesportiva de 27 × 16 m e de areia de 18 × 9 m</small></dd></div>
-      <div class="spec"><dt>Laboratórios</dt><dd>Ciências e informática<small>Aula prática com bancadas, microscópios e computadores</small></dd></div>
+      <div class="spec"><dt>Tecnologia</dt><dd>Sala de informática<small>Computadores para as aulas e pesquisas</small></dd></div>
       <div class="spec"><dt>Leitura e estudo</dt><dd>Biblioteca<small>Com sala de estudo e estúdio de podcast</small></dd></div>
-      <div class="spec"><dt>Parquinhos</dt><dd>3 áreas na grama<small>Espaço ao ar livre para os menores</small></dd></div>
-      <div class="spec"><dt>Famílias</dt><dd>Sala dos pais<small>Atendimento reservado com a coordenação</small></dd></div>
+      <div class="spec"><dt>Recreação</dt><dd>Área verde<small>Espaço ao ar livre para o recreio</small></dd></div>
+      <div class="spec"><dt>Famílias</dt><dd>Coordenação<small>Acompanhamento próximo de alunos e responsáveis</small></dd></div>
     </dl>
   </div>
 </section>
@@ -597,22 +571,45 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
         <h2>Onde Caruaru está crescendo</h2>
         <p class="lede" style="margin-top:20px">A nova sede vai ficar na Zona Norte, perto da PE-095 e da Av. Portugal. É para esse lado que Caruaru se expande, e é para lá que as grandes escolas também estão indo.</p>
         <ul class="reasons">
-          <li>Zona Norte de Caruaru, no eixo da PE-095</li>
+          <li>Zona Norte de Caruaru, na PE-095</li>
           <li>Menos trânsito na entrada e na saída das aulas</li>
           <li>Espaço próprio para estacionamento e embarque</li>
           <li>Região em franco desenvolvimento residencial e comercial</li>
           <li>Grandes escolas migrando para essa direção</li>
           <li>Duplicação da PE prevista para o trecho</li>
         </ul>
-        <div class="hero-actions">
+      </div>
+
+      <aside class="where" aria-labelledby="como-chegar">
+        <h3 id="como-chegar">Como chegar</h3>
+        <address>
+          Rodovia PE-095, 562<br>
+          Luiz Gonzaga, Caruaru - PE<br>
+          CEP 55015-020
+        </address>
+
+        <p class="where-label">Pontos de referência</p>
+        <ul class="landmarks">
+          <li><b>Ao lado do Buffet Renato Machado</b></li>
+          <li><b>Próximo ao Fórum</b></li>
+          <li>Às margens da PE-095, perto da Av. Portugal</li>
+        </ul>
+
+        <div class="where-actions">
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=-8.2534008%2C-35.9697789" target="_blank" rel="noreferrer">Traçar rota</a>
           <a class="btn btn--ghost" href="https://maps.app.goo.gl/oQS1XiiBH7br9eM4A" target="_blank" rel="noreferrer">Abrir no Google Maps</a>
         </div>
-      </div>
-      <figure class="plate">
-        <img src="public/img/mapa-zona-norte.webp" alt="Mapa aéreo de Caruaru com a nova sede marcada na Zona Norte, próxima à Av. Portugal e à PE-095" width="1600" height="861" loading="lazy">
-        <figcaption>Nova sede · Zona Norte, entre a Av. Portugal e a PE-095</figcaption>
-      </figure>
+      </aside>
     </div>
+
+    <div class="mapgrid">
+    <figure class="plate facade">
+      <div class="facade-media">
+        <img src="public/img/fachada.webp" alt="Montagem do prédio da nova sede visto da rua, com a fachada azul e a identidade do Colégio CPPEM aplicadas" width="1600" height="470" loading="lazy">
+        <span class="illus">Ilustrativa</span>
+      </div>
+      <figcaption>Como a fachada vai ficar · montagem sobre o prédio real do terreno</figcaption>
+    </figure>
 
     <figure class="mapframe">
       <div class="mapframe-canvas">
@@ -625,8 +622,9 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
           <span class="map-open">Explorar o mapa</span>
         </button>
       </div>
-      <figcaption>Nova sede do Colégio CPPEM · às margens da PE-095, Zona Norte de Caruaru</figcaption>
+      <figcaption>Vista de satélite · às margens da PE-095, Zona Norte de Caruaru</figcaption>
     </figure>
+    </div>
   </div>
 </section>
 
@@ -640,11 +638,11 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     <div class="stages">
       <article class="stage stage--now">
         <h3>Essencial</h3>
-        <p>Salas, administração, auditório, biblioteca e laboratórios. Tudo o que precisamos para começar as aulas na nova sede com qualidade.</p>
+        <p>Salas, administração, biblioteca e sala de informática. Tudo o que precisamos para começar as aulas na nova sede com qualidade.</p>
       </article>
       <article class="stage">
         <h3>Vida no campus</h3>
-        <p>Quadras, parquinhos, bicicletário e áreas externas para o recreio, o esporte e a convivência entre as turmas.</p>
+        <p>Quadras, área de recreação, bicicletário e áreas externas para o recreio, o esporte e a convivência entre as turmas.</p>
       </article>
       <article class="stage">
         <h3>Melhorias</h3>

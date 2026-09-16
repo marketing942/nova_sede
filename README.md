@@ -20,8 +20,8 @@ são as fontes, e o site usa as versões otimizadas geradas a partir delas.
 
 | Arquivo                             | Papel                                        |
 | ----------------------------------- | -------------------------------------------- |
-| `public/hero-loop.mp4`              | Loop do topo, 531 KB, sem áudio, ida e volta |
-| `public/tour-nova-sede.mp4`         | Tour de 1 min, 720p, 7,9 MB                  |
+| `public/img/hero-sede.webp`         | Foto do topo (render "sacada nova")          |
+| `public/tour-nova-sede.mp4`         | Tour de 50 s, 720p, 5,9 MB                   |
 | `CPPEM_Interiores_Realistas*.mp4`   | Fontes, não publicadas                       |
 
 ## Antes de publicar
