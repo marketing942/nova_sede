@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Nova Sede · Colégio CPPEM</title>
+<meta name="description" content="O Colégio CPPEM vai mudar para uma nova sede na Zona Norte de Caruaru, com laboratório, auditório, biblioteca e quadras. Conheça o projeto, a planta e a localização.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://novasede.cppem.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Colégio CPPEM">
+<meta property="og:title" content="A Nova Sede do Colégio CPPEM">
+<meta property="og:description" content="Zona Norte de Caruaru. Mais espaço, mais estrutura e a mesma formação: fé, disciplina, estabilidade e liberdade.">
+<meta property="og:url" content="https://novasede.cppem.com.br/">
+<meta property="og:image" content="https://novasede.cppem.com.br/public/img/og-nova-sede.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="public/img/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="public/img/icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --abyss:#050b1a;
+  --navy:#081534;
+  --navy-mid:#0e1b3d;
+  --panel:#102451;
+  --gold:#c9a227;
+  --gold-lt:#d8b64a;
+  --bone:#f4f0e4;
+  --mist:#cbd5e1;
+  --rule:rgba(201,162,39,.22);
+  --radius:16px;
+  --radius-sm:10px;
+  --pill:999px;
+  --shell:clamp(20px,5vw,72px);
+  --sans:"Rajdhani",system-ui,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{
+  background:var(--navy);
+  color:var(--bone);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+  -webkit-font-smoothing:antialiased;
+}
+img,video,iframe{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold-lt);outline-offset:3px}
+::selection{background:var(--gold);color:var(--abyss)}
+
+/* malha de projeto: eco da planta baixa, não decoração de fundo */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(201,162,39,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,162,39,.045) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000,transparent 75%);
+  mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000,transparent 75%);
+}
+
+.shell{position:relative;z-index:1;width:100%;max-width:1220px;margin:0 auto;padding-inline:var(--shell)}
+
+/* ---------- tipografia ---------- */
+h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.02;letter-spacing:.005em}
+h1{font-size:clamp(2.5rem,6.4vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(1.9rem,4vw,3.15rem);text-transform:uppercase}
+h3{font-size:clamp(1.15rem,1.7vw,1.45rem);text-transform:uppercase;letter-spacing:.02em}
+.lede{font-family:var(--serif);font-size:clamp(1.06rem,1.55vw,1.35rem);line-height:1.68;color:var(--mist);max-width:62ch}
+.lede em{color:var(--bone);font-style:italic}
+p{max-width:64ch;color:var(--mist)}
+
+/* índice de seção: o número é posição no documento, por isso existe */
+.marker{
+  display:flex;align-items:baseline;gap:14px;
+  font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:22px;
+}
+.marker::after{content:"";flex:1;height:1px;background:var(--rule)}
+.marker b{font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---------- topo ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(8,21,52,.93);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,162,39,.2);
+}
+.topbar .shell{display:flex;align-items:center;gap:18px;height:84px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;flex-shrink:0}
+.brand img{width:58px;height:58px;object-fit:contain}
+.brand span{font-size:1rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}
+.topnav{display:none;margin-left:auto;gap:26px}
+.topnav a{
+  font-size:.78rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);text-decoration:none;transition:color .18s;
+}
+.topnav a:hover{color:var(--gold-lt)}
+.topbar .btn{display:none;margin-left:auto;flex-shrink:0}
+@media(min-width:700px){.topbar .btn{display:inline-flex}}
+@media(min-width:1000px){
+  .topnav{display:flex}
+  .topbar .btn{margin-left:26px}
+}
+
+/* ---------- botões ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:11px 26px;border-radius:var(--pill);
+  font-family:var(--sans);font-size:.83rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  border:1px solid var(--gold);background:var(--gold);color:var(--abyss);
+  text-decoration:none;cursor:pointer;transition:background .18s,border-color .18s,color .18s;
+}
+.btn:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+.btn--ghost{background:transparent;color:var(--gold-lt)}
+.btn--ghost:hover{background:rgba(201,162,39,.12);color:var(--bone)}
+
+/* ---------- selo de ilustração ---------- */
+.illus{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 13px;border:1px solid var(--rule);border-radius:var(--pill);background:rgba(5,11,26,.72);
+  font-size:.62rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-lt);
+  line-height:1.3;
+}
+.illus::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+figure .illus{position:absolute;right:10px;bottom:9px;z-index:2;padding:0;border:0;background:none;
+  font-size:.58rem;letter-spacing:.2em;color:rgba(244,240,228,.82);text-shadow:0 1px 6px rgba(3,7,18,.95)}
+figure .illus::before{width:4px;height:4px;background:var(--gold-lt)}
+
+/* ---------- moldura de imagem ---------- */
+.plate{position:relative;border:1px solid var(--rule);border-radius:var(--radius);background:var(--abyss);overflow:hidden}
+.plate img,.plate video{width:100%;height:auto;object-fit:cover}
+.plate figcaption{
+  padding:11px 14px;border-top:1px solid var(--rule);background:rgba(5,11,26,.6);
+  font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--mist);
+}
+
+/* =================== HERO =================== */
+.hero{position:relative;isolation:isolate;min-height:min(92svh,860px);display:flex;align-items:stretch;overflow:hidden}
+.hero video,.hero .hero-fallback{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(to bottom,rgba(5,11,26,.82) 0%,rgba(5,11,26,.55) 30%,rgba(5,11,26,.08) 55%,rgba(5,11,26,0) 72%,rgba(8,21,52,.55) 90%,var(--navy) 100%),
+    linear-gradient(to right,rgba(5,11,26,.45) 0%,rgba(5,11,26,0) 45%);
+}
+.hero .shell{display:flex;flex-direction:column;padding-block:clamp(28px,5vh,56px) clamp(22px,3.5vh,36px)}
+.hero-place{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);
+}
+.hero-place::before{content:"";width:clamp(28px,5vw,64px);height:1px;background:var(--gold)}
+.hero-grid{display:grid;gap:clamp(18px,3vw,40px);align-items:center;margin-bottom:32px}
+@media(min-width:900px){.hero-grid{grid-template-columns:1fr auto}}
+.hero h1{font-size:clamp(2.3rem,4.6vw,4.1rem);text-shadow:0 2px 30px rgba(3,7,18,.6)}
+.hero h1 .gold{display:block;color:var(--gold)}
+.hero-crest{
+  order:-1;display:grid;place-items:center;
+  width:clamp(104px,13vw,196px);aspect-ratio:1;border-radius:50%;
+  border:3px solid var(--gold);background:rgba(201,162,39,.1);
+  box-shadow:0 0 60px rgba(201,162,39,.42),inset 0 0 40px rgba(201,162,39,.12);
+  backdrop-filter:blur(4px);
+}
+.hero-crest img{width:86%;height:auto;filter:drop-shadow(0 6px 18px rgba(3,7,18,.6))}
+@media(min-width:900px){.hero-crest{order:0}}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  margin-top:auto;padding-top:16px;border-top:1px solid var(--rule);
+}
+.creed{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+.creed b{color:var(--gold-lt);font-weight:600}
+
+/* =================== SEÇÕES =================== */
+section{position:relative;z-index:1}
+.band{padding-block:clamp(64px,10vh,128px)}
+.band--mid{background:var(--navy-mid)}
+.band--deep{background:var(--abyss)}
+
+.split{display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:900px){
+  .split{grid-template-columns:1fr 1fr}
+  .split--wide{grid-template-columns:1.05fr .95fr}
+}
+
+/* ---------- pilares ---------- */
+.pillars{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin-top:clamp(30px,5vw,48px)}
+@media(min-width:620px){.pillars{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.pillars{grid-template-columns:repeat(4,1fr)}}
+.pillar{background:var(--navy);padding:clamp(22px,3vw,30px)}
+.pillar img{width:58px;height:58px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--gold)}
+.pillar h3{margin:18px 0 6px;font-size:1.2rem}
+.pillar p{font-size:.94rem;color:rgba(203,213,225,.8);max-width:30ch}
+
+/* ---------- tour ---------- */
+.tour{display:grid;gap:clamp(20px,3vw,34px);margin-top:clamp(30px,5vw,48px)}
+@media(min-width:1000px){.tour{grid-template-columns:1.62fr 1fr;align-items:start}}
+.tour-stage{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:#000;aspect-ratio:16/9}
+.tour-stage-wrap figcaption{margin-top:11px;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(203,213,225,.75)}
+.tour-stage video{width:100%;height:100%;object-fit:cover}
+.tour-sound{
+  position:absolute;top:14px;right:14px;z-index:2;display:inline-flex;align-items:center;gap:9px;
+  min-height:40px;padding:9px 18px;border:1px solid var(--gold);border-radius:var(--pill);background:var(--gold);color:var(--abyss);
+  font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 8px 26px rgba(3,7,18,.6);
+}
+.tour-sound::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--abyss);animation:soundPulse 1.4s ease-in-out infinite}
+@keyframes soundPulse{50%{opacity:.25}}
+.tour-sound:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+.tour-sound[hidden]{display:none}
+.chapters{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
+.chapters button:last-child{border-bottom:0}
+.chapters button{
+  display:flex;align-items:baseline;gap:14px;width:100%;
+  padding:13px 16px;border:0;border-bottom:1px solid var(--rule);
+  background:transparent;color:var(--mist);text-align:left;cursor:pointer;
+  font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  transition:background .16s,color .16s;
+}
+.chapters button:hover{background:rgba(201,162,39,.08);color:var(--bone)}
+.chapters button[aria-current="true"]{background:rgba(201,162,39,.14);color:var(--gold-lt)}
+.chapters .t{font-family:var(--serif);font-size:.82rem;font-weight:400;color:var(--gold);font-variant-numeric:tabular-nums;flex-shrink:0;width:3.2em}
+
+/* ---------- ambientes ---------- */
+.rooms{display:grid;gap:clamp(18px,2.4vw,26px);margin-top:clamp(30px,5vw,48px)}
+@media(min-width:820px){.rooms{grid-template-columns:repeat(2,1fr)}}
+.room figure{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss)}
+.room img{width:100%;aspect-ratio:1440/567;object-fit:cover}
+.room h3{margin-top:14px;font-size:1.08rem;color:var(--bone)}
+.room p{margin-top:5px;font-size:.93rem;color:rgba(203,213,225,.78);max-width:42ch}
+.room--tall img{aspect-ratio:3/2}
+
+/* ---------- planta 3d ---------- */
+.plan{position:relative;border:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;background:var(--abyss);margin-top:clamp(30px,5vw,48px)}
+.plan iframe{width:100%;height:clamp(380px,62vh,620px);border:0}
+.plan .illus{position:absolute;left:12px;top:12px;z-index:2}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;padding:14px 18px;border:1px solid var(--rule);border-top:0;background:rgba(5,11,26,.5)}
+.legend li{list-style:none;display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.06em;color:var(--mist)}
+.legend i{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.specs{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-top:0;border-radius:0 0 var(--radius) var(--radius);overflow:hidden}
+@media(min-width:560px){.specs{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.specs{grid-template-columns:repeat(4,1fr)}}
+.spec{background:var(--abyss);padding:20px 20px 22px}
+.spec dt{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.spec dd{margin-top:6px;font-size:clamp(1.25rem,1.9vw,1.6rem);font-weight:700;line-height:1.1;color:var(--bone)}
+.spec dd small{margin-top:6px;line-height:1.45}
+.spec dd small{display:block;font-weight:400;font-size:.82rem;color:rgba(203,213,225,.7);letter-spacing:.02em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips li{
+  list-style:none;padding:7px 15px;border:1px solid var(--rule);border-radius:var(--pill);
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);
+}
+
+/* ---------- localização ---------- */
+.reasons{margin-top:26px;border-top:1px solid var(--rule)}
+.reasons li{
+  list-style:none;display:flex;gap:14px;align-items:baseline;
+  padding:13px 2px;border-bottom:1px solid var(--rule);
+  font-size:.98rem;font-weight:500;color:var(--bone);
+}
+.reasons li::before{content:"";width:7px;height:7px;border-radius:50%;flex-shrink:0;background:var(--gold);transform:translateY(-2px)}
+.mapframe{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss);margin-top:clamp(24px,3.5vw,38px)}
+.mapframe-canvas{position:relative}
+/* O alfinete marca o centro do enquadramento, então sairia do lugar assim que
+   alguém arrastasse o mapa. O mapa começa travado e só se solta no clique,
+   junto com o alfinete, que aí já não teria como acompanhar. */
+.mapframe iframe{width:100%;height:clamp(300px,44vh,460px);border:0;background:var(--abyss);filter:saturate(.92);pointer-events:none}
+.mapframe-canvas.live iframe{pointer-events:auto}
+.map-unlock{
+  position:absolute;inset:0;display:block;padding:0;cursor:pointer;
+  border:0;background:rgba(5,11,26,.2);transition:background .18s;
+}
+.map-unlock:hover{background:rgba(5,11,26,.06)}
+.map-open{
+  position:absolute;left:50%;bottom:16px;transform:translateX(-50%);
+  padding:9px 18px;border:1px solid var(--gold);border-radius:var(--pill);background:rgba(5,11,26,.82);color:var(--gold-lt);
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+}
+.mappin{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,calc(-100% + 5px));
+  display:flex;flex-direction:column;align-items:center;pointer-events:none;
+}
+.mappin b{
+  padding:7px 14px;border-radius:var(--pill);background:var(--gold);color:var(--abyss);white-space:nowrap;
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  box-shadow:0 6px 22px rgba(3,7,18,.55);
+}
+.mappin::after{content:"";width:2px;height:20px;background:var(--gold)}
+.mappin i{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.28)}
+.mapframe figcaption{padding:11px 14px;border-top:1px solid var(--rule);background:rgba(5,11,26,.6);
+  font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--mist)}
+
+/* ---------- etapas (sequência real, por isso numerada) ---------- */
+.stages{counter-reset:stage;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;margin-top:clamp(30px,5vw,48px)}
+@media(min-width:840px){.stages{grid-template-columns:repeat(3,1fr)}}
+.stage{background:var(--navy);padding:clamp(24px,3vw,34px);counter-increment:stage}
+.stage::before{
+  content:"Etapa " counter(stage);
+  display:block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+}
+.stage h3{margin:12px 0 10px;font-size:1.3rem}
+.stage p{font-size:.95rem;color:rgba(203,213,225,.8)}
+.stage--now{background:var(--panel)}
+.stage--now::before{content:"Etapa " counter(stage) " · pronta na mudança"}
+
+/* ---------- pertencimento ---------- */
+.pledge{display:grid;gap:10px;margin-top:clamp(28px,4vw,42px)}
+@media(min-width:720px){.pledge{grid-template-columns:repeat(2,1fr)}}
+.pledge li{
+  list-style:none;display:flex;gap:12px;align-items:baseline;
+  padding:14px 16px;border:1px solid var(--rule);border-radius:var(--radius-sm);background:rgba(16,36,81,.35);
+  font-size:.97rem;font-weight:500;color:var(--bone);
+}
+.pledge li::before{content:"";width:7px;height:7px;flex-shrink:0;background:var(--gold);transform:translateY(-1px)}
+
+/* ---------- fechamento ---------- */
+.close{text-align:center}
+.close h2{max-width:18ch;margin:0 auto}
+.close .lede{margin:22px auto 0;text-align:center}
+.close .hero-actions{justify-content:center}
+.close img{width:104px;height:104px;margin:0 auto 26px;object-fit:contain}
+
+/* ---------- rodapé ---------- */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-block:44px}
+.foot-grid{display:grid;gap:26px;margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1)}
+@media(min-width:640px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
+.foot-grid h4{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.foot-grid p,.foot-grid a{font-size:.88rem;color:rgba(255,255,255,.8);text-decoration:none;line-height:1.7}
+.foot-grid a:hover{color:var(--gold-lt)}
+.socials{display:flex;align-items:center;gap:10px;margin-top:10px}
+.socials a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(201,162,39,.4);border-radius:50%}
+.socials a:hover{background:rgba(201,162,39,.12)}
+.socials img{width:16px;height:16px;object-fit:contain}
+.foot-brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.foot-brand img{width:84px;height:84px;object-fit:contain}
+.foot-legal{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+.foot-legal p{font-size:.74rem;color:rgba(255,255,255,.5);max-width:none}
+
+/* ---------- barra fixa mobile ---------- */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;gap:10px;padding:10px var(--shell) calc(10px + env(safe-area-inset-bottom));
+  background:rgba(5,11,26,.95);border-top:1px solid var(--rule);backdrop-filter:blur(8px);
+}
+.dock .btn{flex:1}
+@media(min-width:1000px){.dock{display:none}}
+@media(max-width:999px){footer{padding-bottom:88px}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="shell">
+    <a class="brand" href="#topo">
+      <img src="public/img/brasao-cppem.webp" alt="" width="58" height="58">
+      <span>Colégio CPPEM</span>
+    </a>
+    <nav class="topnav" aria-label="Seções da página">
+      <a href="#tour">Tour</a>
+      <a href="#ambientes">Ambientes</a>
+      <a href="#planta">Planta</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#etapas">Etapas</a>
+    </nav>
+    <a class="btn" href="https://wa.me/5581997076388?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20nova%20sede%20do%20Col%C3%A9gio%20CPPEM" target="_blank" rel="noreferrer">Falar com a escola</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <video src="public/hero-loop.mp4" poster="public/img/aerea.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <h1>A nova sede <span class="gold">do Colégio CPPEM</span></h1>
+        <div class="hero-actions">
+          <a class="btn" href="#tour">Ver o tour</a>
+          <a class="btn btn--ghost" href="#planta">Conhecer a planta</a>
+        </div>
+      </div>
+      <figure class="hero-crest">
+        <img src="public/img/brasao-cppem.webp" alt="Brasão do Colégio CPPEM" width="512" height="512">
+      </figure>
+    </div>
+    <div class="hero-foot">
+      <p class="creed"><b>Fé cristã</b> · Disciplina · Estabilidade · Liberdade</p>
+      <span class="illus">Imagens meramente ilustrativas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE MUDAMOS ============ -->
+<section class="band">
+  <div class="shell">
+    <div class="split split--wide">
+      <div>
+        <h2>Nossa casa ficou pequena para tudo o que somos</h2>
+        <p class="lede" style="margin-top:20px">Hoje o CPPEM vive na Praça Getúlio Vargas. Foi ali que vimos alunos chegarem tímidos e, pouco tempo depois, andarem de cabeça erguida. Cada sala desse prédio guarda uma história, e todas elas vão com a gente.</p>
+        <p style="margin-top:18px">Só que o projeto cresceu. Ele pede laboratório, quadra, auditório, biblioteca e estacionamento, coisas que o prédio atual não tem como receber. Por isso decidimos mudar de endereço, levando os mesmos professores, a mesma rotina e o mesmo jeito de educar para um lugar preparado para os próximos anos.</p>
+      </div>
+      <figure class="plate">
+        <img src="public/img/sede-atual.webp" alt="Fachada de uma unidade do CPPEM com a identidade visual atual" width="1400" height="900" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILARES ============ -->
+<section class="band band--mid">
+  <div class="shell">
+    <h2>O endereço muda. O que a gente ensina, não.</h2>
+    <div class="pillars">
+      <article class="pillar">
+        <img src="public/img/pilar-fe.webp" alt="" width="58" height="58" loading="lazy">
+        <h3>Fé cristã</h3>
+        <p>Valores morais, princípios e propósito na convivência diária.</p>
+      </article>
+      <article class="pillar">
+        <img src="public/img/pilar-disciplina.webp" alt="" width="58" height="58" loading="lazy">
+        <h3>Disciplina</h3>
+        <p>Rotina organizada, respeito à hierarquia e postura como ferramenta de formação.</p>
+      </article>
+      <article class="pillar">
+        <img src="public/img/pilar-estabilidade.webp" alt="" width="58" height="58" loading="lazy">
+        <h3>Estabilidade</h3>
+        <p>Preparação para concursos públicos desde a base escolar, antes da faculdade.</p>
+      </article>
+      <article class="pillar">
+        <img src="public/img/pilar-liberdade.webp" alt="" width="58" height="58" loading="lazy">
+        <h3>Liberdade</h3>
+        <p>Empreendedorismo e educação financeira: do 9º ano ao 3º ano, com projeto real.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOUR ============ -->
+<section class="band" id="tour">
+  <div class="shell">
+    <div class="split split--wide" style="align-items:end">
+      <h2>Um passeio pela escola que estamos preparando</h2>
+      <p class="lede">Imagine a primeira manhã de aula aqui. São 60 segundos pelos ambientes, e você pode tocar num ponto da lista para ir direto a ele.</p>
+    </div>
+
+    <div class="tour">
+      <figure class="tour-stage-wrap">
+        <div class="tour-stage">
+          <video id="tour-video" poster="public/img/poster-tour.webp" controls preload="metadata" playsinline
+                 src="public/tour-nova-sede.mp4"></video>
+          <button type="button" class="tour-sound" id="tour-sound" hidden>Ativar som</button>
+        </div>
+        <figcaption>Vídeo Meramente Ilustrativo</figcaption>
+      </figure>
+
+      <nav class="chapters" id="chapters" aria-label="Capítulos do tour">
+        <button type="button" data-t="2"><span class="t">0:02</span>Fachada e pátio</button>
+        <button type="button" data-t="9"><span class="t">0:09</span>Recepção</button>
+        <button type="button" data-t="16.5"><span class="t">0:16</span>Sala de aula</button>
+        <button type="button" data-t="24"><span class="t">0:24</span>Coordenação</button>
+        <button type="button" data-t="31.5"><span class="t">0:31</span>Laboratório de ciências</button>
+        <button type="button" data-t="39"><span class="t">0:39</span>Auditório</button>
+        <button type="button" data-t="46.5"><span class="t">0:46</span>Quadra de futsal</button>
+        <button type="button" data-t="54"><span class="t">0:54</span>Vôlei de areia</button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMBIENTES ============ -->
+<section class="band band--deep" id="ambientes">
+  <div class="shell">
+    <div class="split split--wide" style="align-items:end">
+      <h2>Os espaços que esperam seus filhos</h2>
+      <p class="lede">Salas separadas por segmento, laboratório, auditório, biblioteca e quadras no mesmo terreno, ligados por um pátio coberto.</p>
+    </div>
+
+    <div class="rooms">
+      <article class="room">
+        <figure><img src="public/img/recepcao.webp" alt="Recepção da nova sede, com brasão do Colégio CPPEM na parede e corredor ao fundo" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Recepção</h3>
+        <p>É aqui que cada família vai ser recebida, logo na entrada do corredor principal.</p>
+      </article>
+      <article class="room">
+        <figure><img src="public/img/sala-de-aula.webp" alt="Sala de aula da nova sede com carteiras enfileiradas, lousa e televisor" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Salas de aula</h3>
+        <p>Doze salas, cada segmento com o seu espaço: Fundamental 1, Fundamental 2 e Ensino Médio, com as carteiras organizadas para a idade de cada turma.</p>
+      </article>
+      <article class="room">
+        <figure><img src="public/img/ciencias.webp" alt="Laboratório de ciências com bancadas, microscópios e vidrarias" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Laboratório de ciências</h3>
+        <p>Bancadas, vidraria e microscópios. A aula de ciências vai sair do livro e parar nas mãos dos alunos.</p>
+      </article>
+      <article class="room">
+        <figure><img src="public/img/auditorio.webp" alt="Auditório da nova sede com poltronas, palco e telão" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Auditório</h3>
+        <p>153 m² para formaturas, palestras, apresentações dos alunos e reuniões de pais, num espaço feito para receber todo mundo.</p>
+      </article>
+      <article class="room">
+        <figure><img src="public/img/coordenacao.webp" alt="Sala de coordenação com mesa de atendimento e mesa de reunião" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Coordenação e atendimento</h3>
+        <p>Secretaria, coordenação, sala dos professores e uma sala reservada para conversar com os pais com calma e privacidade.</p>
+      </article>
+      <article class="room">
+        <figure><img src="public/img/quadra-futsal.webp" alt="Quadra poliesportiva coberta por alambrado, com arquibancada lateral" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
+        <h3>Quadra poliesportiva</h3>
+        <p>27 × 16 m com marcação para futsal, basquete e vôlei. Espaço para a educação física, para os campeonatos e para a torcida na arquibancada.</p>
+      </article>
+    </div>
+
+    <div class="rooms" style="margin-top:clamp(18px,2.4vw,26px)">
+      <article class="room room--tall">
+        <figure><img src="public/img/quadra-poliesportiva-render.webp" alt="Estudo técnico da quadra poliesportiva com dimensões e legenda das marcações" width="1400" height="933" loading="lazy"><span class="illus">Estudo · ilustrativo</span></figure>
+        <h3>Estudo da quadra</h3>
+        <p>Marcação combinada de futsal, basquete e vôlei, com arquibancada em L de três degraus.</p>
+      </article>
+      <article class="room room--tall">
+        <figure><img src="public/img/quadra-areia-render.webp" alt="Estudo técnico da quadra de areia vista de cima, cercada por alambrado" width="1400" height="1050" loading="lazy"><span class="illus">Estudo · ilustrativo</span></figure>
+        <h3>Quadra de areia</h3>
+        <p>18 × 9 m para vôlei e futevôlei, uma modalidade a mais nas aulas e no intervalo.</p>
+      </article>
+    </div>
+
+    <ul class="chips" aria-label="Outros ambientes previstos">
+      <li>Biblioteca</li>
+      <li>Laboratório de informática</li>
+      <li>Sala de AEE</li>
+      <li>Refeitório e convivência</li>
+      <li>Estúdio de podcast</li>
+      <li>Área de cross training</li>
+      <li>Playground</li>
+      <li>Bicicletário</li>
+      <li>Pátio coberto</li>
+      <li>Áreas administrativas ampliadas</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PLANTA 3D ============ -->
+<section class="band" id="planta">
+  <div class="shell">
+    <div class="split split--wide" style="align-items:end">
+      <h2>A sede inteira, em três dimensões</h2>
+      <p class="lede">Esta é a pré-planta em 3D. Use os botões de zoom para passear pelo terreno e descobrir onde vai ficar a sala de aula do seu filho.</p>
+    </div>
+
+    <div class="plan">
+      <span class="illus">Pré-planta sujeita a ajustes de projeto</span>
+      <iframe src="public/campus-3d.html" title="Modelo 3D navegável da pré-planta da nova sede do Colégio CPPEM" loading="lazy"></iframe>
+    </div>
+
+    <ul class="legend" aria-label="Cores dos setores no modelo 3D">
+      <li><i style="background:#b07fe0"></i>Fundamental 1</li>
+      <li><i style="background:#8fbf6a"></i>Fundamental 2</li>
+      <li><i style="background:#5b9bd5"></i>Ensino Médio</li>
+      <li><i style="background:#9aa4ad"></i>Administração e apoio</li>
+      <li><i style="background:#6fae62"></i>Áreas externas</li>
+      <li><i style="background:#4f83c4"></i>Área esportiva</li>
+    </ul>
+
+    <dl class="specs">
+      <div class="spec"><dt>Área total</dt><dd>≈ 6.400 m²<small>Da recepção às quadras</small></dd></div>
+      <div class="spec"><dt>Salas de aula</dt><dd>12 salas<small>Separadas por segmento: Fundamental 1, Fundamental 2 e Médio</small></dd></div>
+      <div class="spec"><dt>Auditório</dt><dd>150 lugares<small>153 m² para formaturas, palestras e reuniões de pais</small></dd></div>
+      <div class="spec"><dt>Quadras</dt><dd>2 quadras<small>Poliesportiva de 27 × 16 m e de areia de 18 × 9 m</small></dd></div>
+      <div class="spec"><dt>Laboratórios</dt><dd>Ciências e informática<small>Aula prática com bancadas, microscópios e computadores</small></dd></div>
+      <div class="spec"><dt>Leitura e estudo</dt><dd>Biblioteca<small>Com sala de estudo e estúdio de podcast</small></dd></div>
+      <div class="spec"><dt>Parquinhos</dt><dd>3 áreas na grama<small>Espaço ao ar livre para os menores</small></dd></div>
+      <div class="spec"><dt>Famílias</dt><dd>Sala dos pais<small>Atendimento reservado com a coordenação</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ LOCALIZAÇÃO ============ -->
+<section class="band band--mid" id="localizacao">
+  <div class="shell">
+
+    <div class="split split--wide">
+      <div>
+        <h2>Onde Caruaru está crescendo</h2>
+        <p class="lede" style="margin-top:20px">A nova sede vai ficar na Zona Norte, perto da PE-095 e da Av. Portugal. É para esse lado que Caruaru se expande, e é para lá que as grandes escolas também estão indo.</p>
+        <ul class="reasons">
+          <li>Zona Norte de Caruaru, no eixo da PE-095</li>
+          <li>Menos trânsito na entrada e na saída das aulas</li>
+          <li>Espaço próprio para estacionamento e embarque</li>
+          <li>Região em franco desenvolvimento residencial e comercial</li>
+          <li>Grandes escolas migrando para essa direção</li>
+          <li>Duplicação da PE prevista para o trecho</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn--ghost" href="https://maps.app.goo.gl/oQS1XiiBH7br9eM4A" target="_blank" rel="noreferrer">Abrir no Google Maps</a>
+        </div>
+      </div>
+      <figure class="plate">
+        <img src="public/img/mapa-zona-norte.webp" alt="Mapa aéreo de Caruaru com a nova sede marcada na Zona Norte, próxima à Av. Portugal e à PE-095" width="1600" height="861" loading="lazy">
+        <figcaption>Nova sede · Zona Norte, entre a Av. Portugal e a PE-095</figcaption>
+      </figure>
+    </div>
+
+    <figure class="mapframe">
+      <div class="mapframe-canvas">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d675.280900760229!2d-35.96999114558026!3d-8.253180154926548!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1789583884184!5m2!1spt-BR!2sbr"
+          title="Mapa de satélite da região da nova sede do Colégio CPPEM" loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <button type="button" class="map-unlock" id="map-unlock" aria-label="Liberar o mapa para arrastar e aproximar">
+          <span class="mappin"><b>Nova sede do Colégio CPPEM</b><i></i></span>
+          <span class="map-open">Explorar o mapa</span>
+        </button>
+      </div>
+      <figcaption>Nova sede do Colégio CPPEM · às margens da PE-095, Zona Norte de Caruaru</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ ETAPAS ============ -->
+<section class="band" id="etapas">
+  <div class="shell">
+    <div class="split split--wide" style="align-items:end">
+      <h2>Uma obra em três etapas, até três anos</h2>
+      <p class="lede">A mudança acontece com a estrutura essencial pronta para as aulas. Depois disso, a sede continua ganhando espaços, crescendo junto com os alunos.</p>
+    </div>
+    <div class="stages">
+      <article class="stage stage--now">
+        <h3>Essencial</h3>
+        <p>Salas, administração, auditório, biblioteca e laboratórios. Tudo o que precisamos para começar as aulas na nova sede com qualidade.</p>
+      </article>
+      <article class="stage">
+        <h3>Vida no campus</h3>
+        <p>Quadras, parquinhos, bicicletário e áreas externas para o recreio, o esporte e a convivência entre as turmas.</p>
+      </article>
+      <article class="stage">
+        <h3>Melhorias</h3>
+        <p>Ajustes e melhorias nos ambientes de dentro e de fora, conforme as turmas crescem.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FECHAMENTO ============ -->
+<section class="band close">
+  <div class="shell">
+    <img src="public/img/brasao-cppem.webp" alt="" width="104" height="104" loading="lazy">
+    <h2>De espectadores para embaixadores</h2>
+    <p class="lede">Na reunião de pais, as famílias presentes decidiram seguir com a gente para a nova sede. Se você não conseguiu ir, a conversa continua aqui: chame a equipe no WhatsApp e tire suas dúvidas sobre a mudança.</p>
+    <div class="hero-actions">
+      <a class="btn" href="https://wa.me/5581997076388?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20nova%20sede%20do%20Col%C3%A9gio%20CPPEM" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+      <a class="btn btn--ghost" href="https://colegio.cppem.com.br" target="_blank" rel="noreferrer">Conhecer o colégio</a>
+    </div>
+    <p style="margin:26px auto 0;max-width:52ch"><span class="illus">Imagens e vídeos meramente ilustrativos</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-brand">
+      <img src="public/img/brasao-cppem.webp" alt="Colégio CPPEM" width="84" height="84" loading="lazy">
+      <p class="creed"><b>Fé cristã</b> · Disciplina · Estabilidade · Liberdade</p>
+    </div>
+
+    <div class="foot-grid">
+      <div>
+        <h4>Sede atual</h4>
+        <p>Praça Presidente Getúlio Vargas, 119<br>Nossa Senhora das Dores<br>Caruaru - PE · Ao lado da Coletivo</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p>
+          <a href="mailto:colegiocppem@gmail.com">colegiocppem@gmail.com</a><br>
+          <a href="tel:+5581997076388">+55 (81) 99707-6388</a><br>
+          <a href="tel:+5581994086174">+55 (81) 99408-6174</a>
+        </p>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <div class="socials">
+          <a href="https://www.instagram.com/colegiocppem/" target="_blank" rel="noreferrer" aria-label="Instagram do Colégio CPPEM"><img src="public/img/instagram.png" alt="" width="16" height="16"></a>
+          <a href="https://wa.me/5581997076388" target="_blank" rel="noreferrer" aria-label="WhatsApp do Colégio CPPEM"><img src="public/img/whatsapp.png" alt="" width="16" height="16"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-legal">
+      <p>© 2026 CPPEM Colégio e Cursos LTDA · CNPJ 57.347.872/0001-48</p>
+      <p>Portaria de Credenciamento Nº 9097 - Secretaria Estadual de Pernambuco</p>
+      <p>Renders, vídeos e pré-planta são material ilustrativo e podem sofrer alterações de projeto.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn--ghost" href="#tour">Ver o tour</a>
+  <a class="btn" href="https://wa.me/5581997076388?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20nova%20sede%20do%20Col%C3%A9gio%20CPPEM" target="_blank" rel="noreferrer">WhatsApp</a>
+</div>
+
+<script>
+(function () {
+  var video = document.getElementById("tour-video");
+  var nav = document.getElementById("chapters");
+  if (!video || !nav) return;
+
+  var buttons = Array.prototype.slice.call(nav.querySelectorAll("button"));
+
+  /* Sem metadados carregados, atribuir currentTime não tem efeito,
+     então o salto espera o vídeo saber a própria duração. */
+  function seek(seconds) {
+    if (video.readyState >= 1) {
+      video.currentTime = seconds;
+      return;
+    }
+    video.addEventListener("loadedmetadata", function once() {
+      video.currentTime = seconds;
+    }, { once: true });
+    video.load();
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      seek(parseFloat(button.dataset.t));
+      video.muted = false; // o clique libera o som
+      var started = video.play();
+      if (started && started.catch) started.catch(function () {});
+    });
+  });
+
+  /* O capítulo atual acompanha o vídeo, inclusive quando a pessoa arrasta a barra. */
+  video.addEventListener("timeupdate", function () {
+    var current = null;
+    buttons.forEach(function (button) {
+      if (video.currentTime + 0.35 >= parseFloat(button.dataset.t)) current = button;
+    });
+    buttons.forEach(function (button) {
+      if (button === current) button.setAttribute("aria-current", "true");
+      else button.removeAttribute("aria-current");
+    });
+  });
+
+  /* Autoplay ao chegar na seção.
+     Os navegadores só deixam tocar COM som se a pessoa já clicou ou tocou em
+     algo na página; rolar a tela não conta. Então tenta com som e, se for
+     barrado, toca mudo e oferece o botão "Ativar som". */
+  var soundButton = document.getElementById("tour-sound");
+  var pausedByUs = false;   // pausa feita pelo script ao sair da seção
+  var pausedByUser = false; // a pessoa pausou: não insistimos mais
+
+  function showSoundButton(show) {
+    soundButton.hidden = !show;
+  }
+
+  function autoplay() {
+    if (pausedByUser || !video.paused) return;
+    video.muted = false;
+    var attempt = video.play();
+    if (!attempt || !attempt.catch) return;
+    attempt.then(function () {
+      showSoundButton(false);
+    }).catch(function () {
+      video.muted = true;
+      showSoundButton(true);
+      var muted = video.play();
+      if (muted && muted.catch) muted.catch(function () {});
+    });
+  }
+
+  soundButton.addEventListener("click", function () {
+    video.muted = false;
+    showSoundButton(false);
+    var started = video.play();
+    if (started && started.catch) started.catch(function () {});
+  });
+
+  video.addEventListener("volumechange", function () {
+    if (!video.muted) showSoundButton(false);
+  });
+
+  video.addEventListener("pause", function () {
+    if (pausedByUs) {
+      pausedByUs = false;
+      return;
+    }
+    if (!video.ended) pausedByUser = true;
+  });
+
+  video.addEventListener("play", function () {
+    pausedByUser = false;
+  });
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          autoplay();
+        } else if (!video.paused) {
+          pausedByUs = true;
+          video.pause();
+        }
+      });
+    }, { threshold: 0.6 }).observe(video);
+  }
+})();
+
+(function () {
+  var unlock = document.getElementById("map-unlock");
+  if (!unlock) return;
+
+  unlock.addEventListener("click", function () {
+    unlock.parentElement.classList.add("live");
+    unlock.remove();
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "School",
+  "name": "Colégio CPPEM",
+  "legalName": "CPPEM Colégio e Cursos LTDA",
+  "url": "https://colegio.cppem.com.br",
+  "logo": "https://novasede.cppem.com.br/public/img/brasao-cppem.webp",
+  "email": "colegiocppem@gmail.com",
+  "telephone": "+5581997076388",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Praça Presidente Getúlio Vargas, 119",
+    "addressLocality": "Caruaru",
+    "addressRegion": "PE",
+    "postalCode": "55004-140",
+    "addressCountry": "BR"
+  },
+  "sameAs": ["https://www.instagram.com/colegiocppem/"]
+}
+</script>
+
+</body>
+</html>
