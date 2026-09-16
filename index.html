@@ -241,7 +241,7 @@ section{position:relative;z-index:1}
 .room img{width:100%;aspect-ratio:1440/567;object-fit:cover}
 .room h3{margin-top:14px;font-size:1.08rem;color:var(--bone)}
 .room p{margin-top:5px;font-size:.93rem;color:rgba(203,213,225,.78);max-width:42ch}
-.room--tall img{aspect-ratio:3/2}
+@media(min-width:820px){.room--wide{grid-column:1 / -1}}
 
 /* ---------- planta 3d ---------- */
 .plan{position:relative;border:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;background:var(--abyss);margin-top:clamp(30px,5vw,48px)}
@@ -531,13 +531,8 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     </div>
 
     <div class="rooms" style="margin-top:clamp(18px,2.4vw,26px)">
-      <article class="room room--tall">
-        <figure><img src="public/img/quadra-poliesportiva-render.webp" alt="Estudo técnico da quadra poliesportiva com dimensões e legenda das marcações" width="1400" height="933" loading="lazy"><span class="illus">Estudo · ilustrativo</span></figure>
-        <h3>Estudo da quadra</h3>
-        <p>Marcação combinada de futsal, basquete e vôlei, com arquibancada em L de três degraus.</p>
-      </article>
-      <article class="room room--tall">
-        <figure><img src="public/img/quadra-areia-render.webp" alt="Estudo técnico da quadra de areia vista de cima, cercada por alambrado" width="1400" height="1050" loading="lazy"><span class="illus">Estudo · ilustrativo</span></figure>
+      <article class="room room--wide">
+        <figure><img src="public/img/volei-areia.webp" alt="Quadra de areia da nova sede, cercada por alambrado e canteiros, ao lado do pátio" width="1440" height="567" loading="lazy"><span class="illus">Ilustrativa</span></figure>
         <h3>Quadra de areia</h3>
         <p>18 × 9 m para vôlei e futevôlei, uma modalidade a mais nas aulas e no intervalo.</p>
       </article>
