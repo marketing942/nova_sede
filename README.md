@@ -15,14 +15,19 @@ python -m http.server 8099
 `vercel.json` fixa `outputDirectory: "."` — sem isso a Vercel trataria a pasta
 `public/` como a raiz publicada e o `index.html` não seria encontrado.
 
-Os dois arquivos originais de vídeo ficam fora do deploy (ver `.vercelignore`):
-são as fontes, e o site usa as versões otimizadas geradas a partir delas.
+A página não usa vídeo. Os dois vídeos originais e o `sacada nova.png` ficam
+na pasta como fonte, mas fora do deploy (ver `.vercelignore`).
 
-| Arquivo                             | Papel                                        |
-| ----------------------------------- | -------------------------------------------- |
-| `public/img/hero-sede.webp`         | Foto do topo (render "sacada nova")          |
-| `public/tour-nova-sede.mp4`         | Tour de 50 s, 720p, 5,9 MB                   |
-| `CPPEM_Interiores_Realistas*.mp4`   | Fontes, não publicadas                       |
+| Arquivo                        | Papel                                            |
+| ------------------------------ | ------------------------------------------------ |
+| `public/img/hero-sede.webp`    | Foto do topo (render "sacada nova")              |
+| `public/img/carrossel/*.webp`  | Imagens do carrossel "Um passeio pela escola"    |
+| `public/img/fachada.webp`      | Montagem da fachada sobre o prédio real          |
+
+`public/` não usa cache longo no navegador (`max-age=0, must-revalidate`): as
+imagens são trocadas mantendo o nome, e um cache de um ano fazia visitantes
+continuarem vendo a versão antiga. Ao trocar um arquivo que já foi publicado,
+aumente também o `?v=` onde ele é referenciado no `index.html`.
 
 ## Antes de publicar
 
@@ -36,14 +41,15 @@ endereço, via `NEXT_PUBLIC_NOVA_SEDE_URL` (ver `next.config.ts` do
 
 ## De onde vêm os materiais
 
-- **Fotos dos ambientes** (`public/img/*.webp`): quadros extraídos do vídeo de
-  interiores, recortados para tirar as tarjas gravadas.
-- **Renders das quadras, mapa e brasão**: extraídos da apresentação
-  `apresentacaoescola/apresentacao-operacao-nova-sede-cppem.html`.
+- **Topo e carrossel**: recortes dos renders aprovados "sacada nova" (visão
+  geral e quadras) e "sala interna", sem as tarjas gravadas.
+- **Fachada, pilares e brasão**: extraídos da apresentação
+  `apresentacaoescola/apresentacao-operacao-nova-sede-cppem.html`. A fachada
+  é uma montagem sobre a foto do prédio real do terreno.
 - **`public/campus-3d.html`**: o planejador 3D que estava embutido naquela
   apresentação, com a paleta trocada para o azul-marinho e o dourado do colégio.
   Carrega three.js por CDN e roda em modo apresentação (gira sozinho, com
   botões de aproximação).
 
-Todo render, vídeo e planta é material ilustrativo — a página sinaliza isso em
+Todo render e a planta são material ilustrativo, e a página sinaliza isso em
 cada bloco de mídia e no rodapé. Manter esse aviso ao trocar qualquer imagem.

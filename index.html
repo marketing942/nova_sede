@@ -14,7 +14,7 @@
 <meta property="og:title" content="A Nova Sede do Colégio CPPEM">
 <meta property="og:description" content="Zona Norte de Caruaru. Mais espaço, mais estrutura e a mesma formação: fé, disciplina, estabilidade e liberdade.">
 <meta property="og:url" content="https://novasede.cppem.com.br/">
-<meta property="og:image" content="https://novasede.cppem.com.br/public/img/og-nova-sede.jpg">
+<meta property="og:image" content="https://novasede.cppem.com.br/public/img/og-nova-sede.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -205,34 +205,24 @@ section{position:relative;z-index:1}
 .pillar h3{margin:18px 0 6px;font-size:1.2rem}
 .pillar p{font-size:.94rem;color:rgba(203,213,225,.8);max-width:30ch}
 
-/* ---------- tour ---------- */
-.tour{display:grid;gap:clamp(20px,3vw,34px);margin-top:clamp(30px,5vw,48px)}
-@media(min-width:1000px){.tour{grid-template-columns:1.62fr 1fr;align-items:start}}
-.tour-stage{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:#000;aspect-ratio:16/9}
-.tour-stage-wrap figcaption{margin-top:11px;font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(203,213,225,.75)}
-.tour-stage video{width:100%;height:100%;object-fit:cover}
-.tour-sound{
-  position:absolute;top:14px;right:14px;z-index:2;display:inline-flex;align-items:center;gap:9px;
-  min-height:40px;padding:9px 18px;border:1px solid var(--gold);border-radius:var(--pill);background:var(--gold);color:var(--abyss);
-  font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
-  box-shadow:0 8px 26px rgba(3,7,18,.6);
+/* ---------- carrossel do projeto ---------- */
+.reel{
+  --reel-gap:clamp(14px,2vw,24px);
+  margin-top:clamp(30px,5vw,48px);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
 }
-.tour-sound::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--abyss);animation:soundPulse 1.4s ease-in-out infinite}
-@keyframes soundPulse{50%{opacity:.25}}
-.tour-sound:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
-.tour-sound[hidden]{display:none}
-.chapters{border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden}
-.chapters button:last-child{border-bottom:0}
-.chapters button{
-  display:flex;align-items:baseline;gap:14px;width:100%;
-  padding:13px 16px;border:0;border-bottom:1px solid var(--rule);
-  background:transparent;color:var(--mist);text-align:left;cursor:pointer;
-  font-family:var(--sans);font-size:.95rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  transition:background .16s,color .16s;
-}
-.chapters button:hover{background:rgba(201,162,39,.08);color:var(--bone)}
-.chapters button[aria-current="true"]{background:rgba(201,162,39,.14);color:var(--gold-lt)}
-.chapters .t{font-family:var(--serif);font-size:.82rem;font-weight:400;color:var(--gold);font-variant-numeric:tabular-nums;flex-shrink:0;width:3.2em}
+/* duas cópias da mesma sequência; o padding fecha a volta sem salto */
+.reel-track{display:flex;gap:var(--reel-gap);padding-right:var(--reel-gap);width:max-content;animation:reel 46s linear infinite}
+.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
+@keyframes reel{to{transform:translateX(-50%)}}
+.reel-item{list-style:none;flex-shrink:0;width:clamp(270px,36vw,500px)}
+.reel-item figure{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss)}
+.reel-item img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.reel-item figcaption{padding:14px 16px 16px;border-top:1px solid var(--rule)}
+.reel-item figcaption b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--bone)}
+.reel-item figcaption span{display:block;margin-top:3px;font-size:.9rem;color:rgba(203,213,225,.78)}
+.reel-item .illus{bottom:auto;top:10px;right:10px;padding:4px 10px;border-radius:var(--pill);background:rgba(5,11,26,.72);text-shadow:none}
 
 
 /* ---------- planta 3d ---------- */
@@ -251,7 +241,7 @@ section{position:relative;z-index:1}
 .spec dd small{margin-top:6px;line-height:1.45}
 .spec dd small{display:block;font-weight:400;font-size:.82rem;color:rgba(203,213,225,.7);letter-spacing:.02em}
 
-.tour-more{margin-top:18px;padding:20px 20px 22px;border:1px dashed rgba(201,162,39,.4);border-radius:var(--radius)}
+.tour-more{margin-top:clamp(24px,3.5vw,36px);padding:20px 20px 22px;border:1px dashed rgba(201,162,39,.4);border-radius:var(--radius)}
 .tour-more-title{font-size:1.2rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold)}
 .tour-more p:not(.tour-more-title){margin-top:6px;font-size:.93rem;color:rgba(203,213,225,.8)}
 .tour-more .chips{margin-top:14px}
@@ -390,6 +380,9 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .hero .hero-media{animation:none!important}
+  .reel{overflow-x:auto}
+  .reel-track{animation:none!important}
+  .reel-item[aria-hidden]{display:none}
 }
 </style>
 </head>
@@ -403,7 +396,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
       <span>Colégio CPPEM</span>
     </a>
     <nav class="topnav" aria-label="Seções da página">
-      <a href="#tour">Tour</a>
+      <a href="#projeto">Projeto</a>
       <a href="#planta">Planta</a>
       <a href="#localizacao">Localização</a>
       <a href="#etapas">Etapas</a>
@@ -422,7 +415,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
       <div>
         <h1>A nova sede <span class="gold">do Colégio CPPEM</span></h1>
         <div class="hero-actions">
-          <a class="btn" href="#tour">Ver o tour</a>
+          <a class="btn" href="#projeto">Ver o projeto</a>
           <a class="btn btn--ghost" href="#planta">Conhecer a planta</a>
         </div>
       </div>
@@ -482,47 +475,42 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
   </div>
 </section>
 
-<!-- ============ TOUR ============ -->
-<section class="band" id="tour">
+<!-- ============ PROJETO ============ -->
+<section class="band" id="projeto">
   <div class="shell">
     <div class="split split--wide" style="align-items:end">
       <h2>Um passeio pela escola que estamos preparando</h2>
-      <p class="lede">Imagine a primeira manhã de aula aqui. São 30 segundos pelos ambientes, e você pode tocar num ponto da lista para ir direto a ele.</p>
+      <p class="lede">Imagine a primeira manhã de aula aqui. Estas são algumas imagens do projeto, e outras vão chegar conforme a obra avança.</p>
     </div>
+  </div>
 
-    <div class="tour">
-      <figure class="tour-stage-wrap">
-        <div class="tour-stage">
-          <video id="tour-video" poster="public/img/poster-tour.webp" controls preload="metadata" playsinline
-                 src="public/tour-nova-sede.mp4"></video>
-          <button type="button" class="tour-sound" id="tour-sound" hidden>Ativar som</button>
-        </div>
-        <figcaption>Vídeo Meramente Ilustrativo</figcaption>
-      </figure>
+  <div class="reel" role="region" aria-label="Imagens do projeto da nova sede">
+    <ul class="reel-track">
+      <li class="reel-item"><figure><img src="public/img/carrossel/visao-geral.webp" alt="Vista aérea do projeto da nova sede, com o prédio identificado e a quadra ao lado" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Visão geral</b><span>Prédio, pátio e quadras no mesmo terreno</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/fachada.webp" alt="Montagem da fachada azul com o brasão e o letreiro do Colégio CPPEM" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Fachada</b><span>A identidade do CPPEM no prédio do terreno</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/sala-de-aula.webp" alt="Sala de aula com quadro branco, projetor, brasão do colégio e carteiras" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Sala de aula</b><span>Quadro branco, projetor e carteiras escolares</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/quadra.webp" alt="Quadra poliesportiva com o brasão no centro e a quadra de areia ao fundo" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Quadras</b><span>Poliesportiva e quadra de areia</span></figcaption></figure></li>
+      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/visao-geral.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Visão geral</b><span>Prédio, pátio e quadras no mesmo terreno</span></figcaption></figure></li>
+      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/fachada.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Fachada</b><span>A identidade do CPPEM no prédio do terreno</span></figcaption></figure></li>
+      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/sala-de-aula.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Sala de aula</b><span>Quadro branco, projetor e carteiras escolares</span></figcaption></figure></li>
+      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/quadra.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Quadras</b><span>Poliesportiva e quadra de areia</span></figcaption></figure></li>
+    </ul>
+  </div>
 
-      <div>
-      <nav class="chapters" id="chapters" aria-label="Capítulos do tour">
-        <button type="button" data-t="2"><span class="t">0:02</span>Fachada e pátio</button>
-        <button type="button" data-t="8.1"><span class="t">0:08</span>Sala de aula</button>
-        <button type="button" data-t="15"><span class="t">0:15</span>Quadra de futsal</button>
-        <button type="button" data-t="23"><span class="t">0:23</span>Vôlei de areia</button>
-      </nav>
-
-      <div class="tour-more">
-        <p class="tour-more-title">E muito mais vem por aí</p>
-        <p>Outros espaços da nova sede vão ganhando forma e vamos mostrar cada um conforme a obra avança.</p>
-        <ul class="chips" aria-label="Outros ambientes previstos">
-          <li>Biblioteca</li>
-          <li>Sala de informática</li>
-          <li>Sala de AEE</li>
-          <li>Refeitório e convivência</li>
-          <li>Estúdio de podcast</li>
-          <li>Área de recreação</li>
-          <li>Bicicletário</li>
-          <li>Pátio coberto</li>
-        </ul>
-      </div>
-      </div>
+  <div class="shell">
+    <div class="tour-more">
+      <p class="tour-more-title">E muito mais vem por aí</p>
+      <p>Outros espaços da nova sede vão ganhando forma e vamos mostrar cada um conforme a obra avança.</p>
+      <ul class="chips" aria-label="Outros ambientes previstos">
+        <li>Biblioteca</li>
+        <li>Sala de informática</li>
+        <li>Sala de AEE</li>
+        <li>Refeitório e convivência</li>
+        <li>Estúdio de podcast</li>
+        <li>Área de recreação</li>
+        <li>Bicicletário</li>
+        <li>Pátio coberto</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -537,7 +525,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
 
     <div class="plan">
       <span class="illus">Pré-planta sujeita a ajustes de projeto</span>
-      <iframe src="public/campus-3d.html" title="Modelo 3D navegável da pré-planta da nova sede do Colégio CPPEM" loading="lazy"></iframe>
+      <iframe src="public/campus-3d.html?v=3" title="Modelo 3D navegável da pré-planta da nova sede do Colégio CPPEM" loading="lazy"></iframe>
     </div>
 
     <ul class="legend" aria-label="Cores dos setores no modelo 3D">
@@ -605,7 +593,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     <div class="mapgrid">
     <figure class="plate facade">
       <div class="facade-media">
-        <img src="public/img/fachada.webp" alt="Montagem do prédio da nova sede visto da rua, com a fachada azul e a identidade do Colégio CPPEM aplicadas" width="1600" height="470" loading="lazy">
+        <img src="public/img/fachada.webp?v=3" alt="Montagem do prédio da nova sede visto da rua, com a fachada azul e a identidade do Colégio CPPEM aplicadas" width="1600" height="470" loading="lazy">
         <span class="illus">Ilustrativa</span>
       </div>
       <figcaption>Como a fachada vai ficar · montagem sobre o prédio real do terreno</figcaption>
@@ -706,118 +694,11 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
 </footer>
 
 <div class="dock">
-  <a class="btn btn--ghost" href="#tour">Ver o tour</a>
+  <a class="btn btn--ghost" href="#projeto">Ver o projeto</a>
   <a class="btn" href="https://wa.me/5581997076388?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20nova%20sede%20do%20Col%C3%A9gio%20CPPEM" target="_blank" rel="noreferrer">WhatsApp</a>
 </div>
 
 <script>
-(function () {
-  var video = document.getElementById("tour-video");
-  var nav = document.getElementById("chapters");
-  if (!video || !nav) return;
-
-  var buttons = Array.prototype.slice.call(nav.querySelectorAll("button"));
-
-  /* Sem metadados carregados, atribuir currentTime não tem efeito,
-     então o salto espera o vídeo saber a própria duração. */
-  function seek(seconds) {
-    if (video.readyState >= 1) {
-      video.currentTime = seconds;
-      return;
-    }
-    video.addEventListener("loadedmetadata", function once() {
-      video.currentTime = seconds;
-    }, { once: true });
-    video.load();
-  }
-
-  buttons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      seek(parseFloat(button.dataset.t));
-      video.muted = false; // o clique libera o som
-      var started = video.play();
-      if (started && started.catch) started.catch(function () {});
-    });
-  });
-
-  /* O capítulo atual acompanha o vídeo, inclusive quando a pessoa arrasta a barra. */
-  video.addEventListener("timeupdate", function () {
-    var current = null;
-    buttons.forEach(function (button) {
-      if (video.currentTime + 0.35 >= parseFloat(button.dataset.t)) current = button;
-    });
-    buttons.forEach(function (button) {
-      if (button === current) button.setAttribute("aria-current", "true");
-      else button.removeAttribute("aria-current");
-    });
-  });
-
-  /* Autoplay ao chegar na seção.
-     Os navegadores só deixam tocar COM som se a pessoa já clicou ou tocou em
-     algo na página; rolar a tela não conta. Então tenta com som e, se for
-     barrado, toca mudo e oferece o botão "Ativar som". */
-  var soundButton = document.getElementById("tour-sound");
-  var pausedByUs = false;   // pausa feita pelo script ao sair da seção
-  var pausedByUser = false; // a pessoa pausou: não insistimos mais
-
-  function showSoundButton(show) {
-    soundButton.hidden = !show;
-  }
-
-  function autoplay() {
-    if (pausedByUser || !video.paused) return;
-    video.muted = false;
-    var attempt = video.play();
-    if (!attempt || !attempt.catch) return;
-    attempt.then(function () {
-      showSoundButton(false);
-    }).catch(function () {
-      video.muted = true;
-      showSoundButton(true);
-      var muted = video.play();
-      if (muted && muted.catch) muted.catch(function () {});
-    });
-  }
-
-  soundButton.addEventListener("click", function () {
-    video.muted = false;
-    showSoundButton(false);
-    var started = video.play();
-    if (started && started.catch) started.catch(function () {});
-  });
-
-  video.addEventListener("volumechange", function () {
-    if (!video.muted) showSoundButton(false);
-  });
-
-  video.addEventListener("pause", function () {
-    if (pausedByUs) {
-      pausedByUs = false;
-      return;
-    }
-    if (!video.ended) pausedByUser = true;
-  });
-
-  video.addEventListener("play", function () {
-    pausedByUser = false;
-  });
-
-  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          autoplay();
-        } else if (!video.paused) {
-          pausedByUs = true;
-          video.pause();
-        }
-      });
-    }, { threshold: 0.6 }).observe(video);
-  }
-})();
-
 (function () {
   var unlock = document.getElementById("map-unlock");
   if (!unlock) return;
