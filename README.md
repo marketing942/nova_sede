@@ -20,7 +20,7 @@ na pasta como fonte, mas fora do deploy (ver `.vercelignore`).
 
 | Arquivo                        | Papel                                            |
 | ------------------------------ | ------------------------------------------------ |
-| `public/img/hero-sede.webp`    | Foto do topo (render "sacada nova")              |
+| `public/img/hero-aerea.webp`   | Foto do topo (render aéreo do conjunto)          |
 | `public/img/carrossel/*.webp`  | Imagens do carrossel "Um passeio pela escola"    |
 | `public/img/fachada.webp`      | Montagem da fachada sobre o prédio real          |
 
@@ -41,8 +41,9 @@ endereço, via `NEXT_PUBLIC_NOVA_SEDE_URL` (ver `next.config.ts` do
 
 ## De onde vêm os materiais
 
-- **Topo e carrossel**: recortes dos renders aprovados "sacada nova" (visão
-  geral e quadras) e "sala interna", sem as tarjas gravadas.
+- **Topo**: render aéreo do conjunto, enviado pela direção.
+- **Carrossel**: recortes dos renders aprovados "sacada nova" (visão geral e
+  quadras) e "sala interna", sem as tarjas gravadas.
 - **Fachada, pilares e brasão**: extraídos da apresentação
   `apresentacaoescola/apresentacao-operacao-nova-sede-cppem.html`. A fachada
   é uma montagem sobre a foto do prédio real do terreno.
