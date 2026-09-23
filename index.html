@@ -206,23 +206,41 @@ section{position:relative;z-index:1}
 .pillar p{font-size:.94rem;color:rgba(203,213,225,.8);max-width:30ch}
 
 /* ---------- carrossel do projeto ---------- */
+.reel-wrap{position:relative;margin-top:clamp(30px,5vw,48px)}
 .reel{
   --reel-gap:clamp(14px,2vw,24px);
-  margin-top:clamp(30px,5vw,48px);overflow:hidden;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-ms-overflow-style:none;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
 }
-/* duas cópias da mesma sequência; o padding fecha a volta sem salto */
-.reel-track{display:flex;gap:var(--reel-gap);padding-right:var(--reel-gap);width:max-content;animation:reel 46s linear infinite}
-.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
-@keyframes reel{to{transform:translateX(-50%)}}
-.reel-item{list-style:none;flex-shrink:0;width:clamp(270px,36vw,500px)}
+.reel::-webkit-scrollbar{display:none}
+.reel:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.reel-track{display:flex;gap:var(--reel-gap);padding:0 var(--reel-gap);width:max-content}
+.reel-item{list-style:none;flex-shrink:0;width:clamp(270px,36vw,500px);scroll-snap-align:center}
 .reel-item figure{position:relative;border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden;background:var(--abyss)}
 .reel-item img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .reel-item figcaption{padding:14px 16px 16px;border-top:1px solid var(--rule)}
 .reel-item figcaption b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--bone)}
 .reel-item figcaption span{display:block;margin-top:3px;font-size:.9rem;color:rgba(203,213,225,.78)}
 .reel-item .illus{bottom:auto;top:10px;right:10px;padding:4px 10px;border-radius:var(--pill);background:rgba(5,11,26,.72);text-shadow:none}
+
+/* setas de navegação manual */
+.reel-nav{
+  position:absolute;top:calc(50% - 34px);transform:translateY(-50%);z-index:2;
+  display:grid;place-items:center;width:44px;height:44px;padding:0;
+  border:1px solid var(--rule);border-radius:50%;cursor:pointer;
+  background:rgba(5,11,26,.8);color:var(--bone);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .18s,color .18s,border-color .18s;
+}
+.reel-nav:hover{background:var(--gold);color:var(--abyss);border-color:var(--gold)}
+.reel-nav:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.reel-nav svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.reel-nav--prev{left:clamp(6px,2vw,24px)}
+.reel-nav--next{right:clamp(6px,2vw,24px)}
+@media(max-width:619px){.reel-nav{width:38px;height:38px}.reel-nav svg{width:15px;height:15px}}
+@media(min-width:1200px){.reel-nav{width:52px;height:52px}.reel-nav svg{width:20px;height:20px}}
 
 
 /* ---------- planta 3d ---------- */
@@ -380,9 +398,7 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .hero .hero-media{animation:none!important}
-  .reel{overflow-x:auto}
-  .reel-track{animation:none!important}
-  .reel-item[aria-hidden]{display:none}
+  .reel{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -484,15 +500,19 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
     </div>
   </div>
 
-  <div class="reel" role="region" aria-label="Imagens do projeto da nova sede">
-    <ul class="reel-track">
+  <div class="reel-wrap">
+    <div class="reel" id="reel" role="region" tabindex="0" aria-label="Imagens do projeto da nova sede">
+      <ul class="reel-track">
       <li class="reel-item"><figure><img src="public/img/carrossel/fachada.webp" alt="Montagem da fachada azul com o brasão e o letreiro do Colégio CPPEM" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Fachada</b><span>A identidade do CPPEM no prédio do terreno</span></figcaption></figure></li>
       <li class="reel-item"><figure><img src="public/img/carrossel/sala-de-aula.webp" alt="Sala de aula com quadro branco, projetor, brasão do colégio e carteiras" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Sala de aula</b><span>Quadro branco, projetor e carteiras escolares</span></figcaption></figure></li>
-      <li class="reel-item"><figure><img src="public/img/visaogeral.jpeg" alt="Quadra poliesportiva com o brasão no centro e a quadra de areia ao fundo" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Visão geral</b><span>Quadras e Exteriores</span></figcaption></figure></li>
-      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/fachada.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Fachada</b><span>A identidade do CPPEM no prédio do terreno</span></figcaption></figure></li>
-      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/carrossel/sala-de-aula.webp" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Sala de aula</b><span>Quadro branco, projetor e carteiras escolares</span></figcaption></figure></li>
-      <li class="reel-item" aria-hidden="true"><figure><img src="public/img/visaogeral.jpeg" alt="" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Visão geral</b><span>Quadras e Exteriores</span></figcaption></figure></li>
-    </ul>
+      <li class="reel-item"><figure><img src="public/img/visaogeral.jpeg" alt="Montagem com a fachada atual, a vista aérea do pátio com quadra e playground e o render da nova fachada" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Visão geral</b><span>Quadras e Exteriores</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/quadra-futsal.webp" alt="Vista aérea da quadra de futsal, com piso modular colorido, traves e tabelas de basquete" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Quadra de futsal</b><span>Piso modular, traves e tabelas de basquete</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/quadra-areia.webp" alt="Vista aérea da quadra de areia para vôlei, com rede no centro e alambrado em volta" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Quadra de vôlei</b><span>Vôlei de areia, cercado por alambrado</span></figcaption></figure></li>
+      <li class="reel-item"><figure><img src="public/img/carrossel/playground.webp" alt="Playground infantil de madeira com casinha coberta, rede de escalada, ponte de cordas e escada" width="1040" height="585" loading="lazy"><span class="illus">Ilustrativa</span><figcaption><b>Playground infantil</b><span>Espaço de brincar para os menores</span></figcaption></figure></li>
+      </ul>
+    </div>
+    <button class="reel-nav reel-nav--prev" type="button" aria-controls="reel" aria-label="Ver imagem anterior"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5 8 12l7 7"/></svg></button>
+    <button class="reel-nav reel-nav--next" type="button" aria-controls="reel" aria-label="Ver próxima imagem"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
 
   <div class="shell">
@@ -695,6 +715,69 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.1);padding-
   <a class="btn btn--ghost" href="#projeto">Ver o projeto</a>
   <a class="btn" href="https://wa.me/5581997076388?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20nova%20sede%20do%20Col%C3%A9gio%20CPPEM" target="_blank" rel="noreferrer">WhatsApp</a>
 </div>
+
+<script>
+(function () {
+  var wrap = document.querySelector(".reel-wrap");
+  if (!wrap) return;
+
+  var reel = wrap.querySelector(".reel");
+  var track = wrap.querySelector(".reel-track");
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var timer = null, idle = null, self = false;
+
+  function stride() {
+    var first = track.children[0];
+    if (!first) return reel.clientWidth;
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  // chegou na ponta, volta pra outra: o carrossel nao tem inicio nem fim visivel
+  function slide(dir) {
+    var limit = reel.scrollWidth - reel.clientWidth, x;
+    if (dir > 0) x = reel.scrollLeft >= limit - 2 ? 0 : Math.min(reel.scrollLeft + stride(), limit);
+    else x = reel.scrollLeft <= 2 ? limit : Math.max(reel.scrollLeft - stride(), 0);
+    reel.scrollTo({ left: x, behavior: calm.matches ? "auto" : "smooth" });
+  }
+
+  function play() {
+    stop();
+    if (calm.matches) return;
+    timer = setInterval(function () {
+      if (document.hidden) return;
+      self = true;
+      slide(1);
+      setTimeout(function () { self = false; }, 900);
+    }, 5000);
+  }
+
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  // depois de mexer na mao, deixa a pessoa olhar antes de voltar a girar sozinho
+  function hold() {
+    stop();
+    clearTimeout(idle);
+    idle = setTimeout(function () {
+      if (!wrap.matches(":hover")) play();
+    }, 7000);
+  }
+
+  wrap.querySelector(".reel-nav--prev").addEventListener("click", function () { slide(-1); hold(); });
+  wrap.querySelector(".reel-nav--next").addEventListener("click", function () { slide(1); hold(); });
+  reel.addEventListener("scroll", function () { if (!self) hold(); }, { passive: true });
+  wrap.addEventListener("pointerenter", stop);
+  wrap.addEventListener("pointerleave", play);
+  wrap.addEventListener("focusin", stop);
+  wrap.addEventListener("focusout", play);
+  calm.addEventListener("change", play);
+
+  play();
+})();
+</script>
 
 <script>
 (function () {
